@@ -1,5 +1,12 @@
-﻿class Hello{
+﻿using System;
 
-    static Main string
+
+class Hello
+{
+
+    static void Main (string[] args)
+    {
+        Console.WriteLine("this is for testing purpose");
+    }
 
 }
