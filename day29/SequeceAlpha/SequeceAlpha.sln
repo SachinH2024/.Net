@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequeceAlpha", "SequeceAlpha\SequeceAlpha.csproj", "{615CB283-6F13-4356-BD22-BE61C3A8AC17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{615CB283-6F13-4356-BD22-BE61C3A8AC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615CB283-6F13-4356-BD22-BE61C3A8AC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615CB283-6F13-4356-BD22-BE61C3A8AC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615CB283-6F13-4356-BD22-BE61C3A8AC17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81BEA3B1-7F76-4AD6-B017-579D2FD24549}
+	EndGlobalSection
+EndGlobal
