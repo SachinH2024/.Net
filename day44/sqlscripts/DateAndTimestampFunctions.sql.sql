@@ -1,0 +1,19 @@
+
+
+CREATE FUNCTION MyDateIn()
+RETURNS DATE
+AS
+BEGIN
+    RETURN GETDATE();
+END;
+
+SELECT dbo.MyDateIn() AS CurrentDate;
+
+CREATE FUNCTION MyTimestamp()
+RETURNS DATETIME
+AS
+BEGIN
+    RETURN GETDATE();
+END;
+
+SELECT dbo.MyTimestamp() AS CurrentTimestamp;
