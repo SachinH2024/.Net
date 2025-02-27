@@ -1,0 +1,54 @@
+﻿@model RegistrationApp.Models.Registration
+
+<h2>Registration</h2>
+
+<form id="registrationForm" asp-controller="Registration" asp-action="Index" method="post">
+    <div>
+        <label asp-for="FirstName">First Name:</label>
+        <input name="FirstName" />
+        <span id="firstNameError" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="LastName">Last Name:</label>
+        <input name="LastName" />
+        <span id="lastNameError" style="color: red;"></span>
+    </div>
+    
+    <button type="submit">Register</button>
+</form>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#registrationForm').submit(function (event) {
+                let isValid = true;
+                $('#firstNameError').text('');
+                $('#lastNameError').text('');
+
+                let firstName = $('#FirstName').val();
+                let lastName = $('#LastName').val();
+
+                if (firstName.trim() === '') {
+                    $('#firstNameError').text('First name cannot be empty.');
+                    isValid = false;
+                } else if (firstName.length > 50) {
+                    $('#firstNameError').text('First name cannot exceed 50 characters.');
+                    isValid = false;
+                }
+
+                if (lastName.trim() === '') {
+                    $('#lastNameError').text('Last name cannot be empty.');
+                    isValid = false;
+                } else if (lastName.length > 50) {
+                    $('#lastNameError').text('Last name cannot exceed 50 characters.');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                }
+            });
+        });
+    </script>
+}
