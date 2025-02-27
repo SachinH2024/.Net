@@ -1,0 +1,31 @@
+﻿@using CustomerDetailsApp.Model;
+@model List<Customer>
+
+<h2>Customer List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Addresses</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>
+                    <ul>
+                        @foreach (var address in customer.Addresses)
+                        {
+                            <li>@address.Street, @address.City, @address.ZipCode</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
