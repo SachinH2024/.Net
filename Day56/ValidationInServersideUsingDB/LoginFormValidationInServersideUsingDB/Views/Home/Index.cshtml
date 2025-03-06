@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="~/CSS/styles.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1 class="head">Welcome to RRD Login Page</h1>
+	@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+	{
+		<p style="color: red;">@ViewBag.ErrorMessage</p>
+	}
+	@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+	{
+		<p style="color: green;">@ViewBag.SuccessMessage</p>
+	}
+	<div class="container">
+		<form id="loginForm" method="post">
+			<div class="form-group">
+				<label for="user">Username:</label>
+				<input type="text" name="username" id="username" placeholder="Enter the UserName" onblur="fnValidateUserName()">
+				<span id="usercheck" style="color: red;">**Username is missing</span><br /><br />
+
+				<label for="password">Password:</label>
+				<input type="password" name="password" id="password" placeholder="Enter the Password" >
+				<span id="passcheck" style="color: red;">**Please Fill the password</span><br /><br />
+				<button type="submit">Login</button>
+				@* <input type="submit" id="submitbtn" value="Submit" class="btnSubmit"> *@
+			</div>
+		</form>
+		
+		@* 		@if (ViewBag.Message == null)
+		{
+			<h1>Enter the Details.</h1>
+		}
+		else
+		{
+			<h1>@ViewBag.Message</h1>
+		} *@
+	</div>
+	<img id="imgLoading" src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47seuqa5btc71x9ti62d84ov2q09fj2rnlr6mybgpa&rid=giphy.gif&ct=g" style="display: none;" />
+
+	<div id="userValidationMessage">
+		@{
+			Html.RenderPartial("_UserValidationMessage", "");
+		}
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$("#imgLoading").hide();
+
+		async function fnValidateUserName() {
+			$("#imgLoading").show();
+
+			var username = $("#username").val();
+
+			await $.post("/Home/index", { username: username }, function(response) {
+				$("#userValidationMessage").html(response);
+				if (response === "User already exists") {
+					$("#userValidationMessage").css("color", "red");
+				} else {
+					$("#userValidationMessage").css("color", "green");
+				}
+				$("#imgLoading").hide();
+
+			}).fail(function() {
+				$("#userValidationMessage").html("An error occurred.");
+				$("#userValidationMessage").css("color", "red");
+				$("#imgLoading").hide();
+			});
+
+
+		}
+	</script>
+	<script src="/js/login.js"></script>
+</body>
+</html>
+
+
+

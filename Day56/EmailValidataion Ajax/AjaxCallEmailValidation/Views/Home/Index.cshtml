@@ -1,0 +1,49 @@
+﻿﻿@{
+    ViewBag.ChildTitle = "Email Validation";
+
+}
+
+<section>
+    <h2>Email Validation</h2>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onmouseout="fnValidateEmail()"/>
+        
+    </div>
+</section>
+
+<img id="imgLoading" src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47seuqa5btc71x9ti62d84ov2q09fj2rnlr6mybgpa&rid=giphy.gif&ct=g" style="display: none;" />
+
+<div id="emailValidationMessage">
+    @{
+        Html.RenderPartial("_EmailValidationMessage", "");
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $("#imgLoading").hide();
+
+    async function fnValidateEmail() {
+        $("#imgLoading").show();
+
+        var email = $("#email").val();
+        await $.post("/")
+        await $.post("/Home/ValidateEmail", { email: email }, function(response) {
+            $("#emailValidationMessage").html(response);
+            if (response === "Email already exists") {
+                $("#emailValidationMessage").css("color", "red");
+            } else {
+                $("#emailValidationMessage").css("color", "green");
+            }
+            $("#imgLoading").hide();
+
+        }).fail(function() {
+            $("#emailValidationMessage").html("An error occurred.");
+            $("#emailValidationMessage").css("color", "red");
+            $("#imgLoading").hide();
+        });
+
+
+    }
+</script>
