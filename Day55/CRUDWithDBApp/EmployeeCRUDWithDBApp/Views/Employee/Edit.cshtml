@@ -1,0 +1,27 @@
+﻿﻿@using EmployeeCRUDWithDBApp.DTOs
+@model EmployeeEditDto
+
+@using (Html.BeginForm())
+{
+
+    <p>
+        @Html.HiddenFor(m => m.Id)
+
+
+    </p>
+
+
+    <p>
+        Name is @Html.TextBoxFor(m => m.Name)
+
+
+    </p>
+
+    <p>
+        salary is @Html.TextBoxFor(m => m.Salary)
+
+
+    </p>
+    <input type="submit" value="Save" />
+
+}

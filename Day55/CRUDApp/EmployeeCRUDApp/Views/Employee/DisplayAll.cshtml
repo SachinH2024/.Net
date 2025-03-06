@@ -1,0 +1,45 @@
+﻿﻿@using EmployeeCRUDApp.DTOs
+@model DisplayAllDto
+
+<h1>@Model.HeaderTitle</h1>
+
+<h2>Current employee strength is @Model.Count</h2>
+<p>
+    @Html.ActionLink("add employee", "Add", "Employee", null, new { @class = "btn btn-primary" })
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Edit</th>
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    @foreach (var emp in Model.Employees)
+    {
+        <tr>
+            <td>@emp.Id</td>
+            <td>@emp.Name</td>
+            <td>@emp.Salary</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Employee", new { id = emp.Id })</td>
+            <td>@Html.ActionLink("X", "Delete", "Employee", new { id = emp.Id }, new { onclick = "return fnAreYouSure()" })</td>
+        </tr>
+
+    }
+
+</table>
+
+
+<script>
+    function fnAreYouSure() {
+
+        return confirm('are you sure to delete');
+
+    }
+
+
+</script>

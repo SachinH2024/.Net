@@ -1,0 +1,56 @@
+﻿﻿@using EmployeeCRUDWithDBApp.DTOs
+@model DisplayAllDto
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+</head>
+<body>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <h1>@Model.HeaderTitle</h1>
+
+    <h2>Current employee strength is @Model.Count</h2>
+    <p>
+        @Html.ActionLink("Add employee", "Add", "Employee", null, new { @class = "btn btn-info" })
+    </p>
+
+    <table class="table" style="width:70%">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+
+        @foreach (var emp in Model.Employees)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Salary</td>
+                @* <td>@Html.ActionLink("Edit", "Edit", "Employee", new { id = emp.Id })</td> *@
+                <td>@Html.ActionLink("Edit", "Edit", "Employee", new { id = emp.Id }, new { @class = "btn btn-primary" })</td>
+                <td>@Html.ActionLink("X", "Delete", "Employee", new { id = emp.Id }, new { @class = "btn btn-danger", onclick = "return fnAreYouSure()" })</td>
+            </tr>
+
+        }
+
+    </table>
+
+
+    <script>
+        function fnAreYouSure() {
+
+            return confirm('Are you sure to delete');
+
+        }
+
+
+    </script>
+</body>
+</html>

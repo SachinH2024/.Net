@@ -1,0 +1,21 @@
+﻿﻿@using EmployeeCRUDWithDBApp.DTOs
+@model EmployeeAddDto
+
+
+@* <h1>@Model.HeaderTitle</h1> *@
+
+@using (Html.BeginForm())
+{
+    <p>
+        ID is : @Html.TextBoxFor(m => m.Id)
+    </p>
+    <p>
+        Name is : @Html.TextBoxFor(m => m.Name)
+    </p>
+    <p>
+        Salary is : @Html.TextBoxFor(m => m.Salary)
+    </p>
+
+    <input type="submit" value="Add" />
+
+}
