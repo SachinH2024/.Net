@@ -1,0 +1,28 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>home</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body class="container">
+    <h1 class="display-1">Home Page</h1>
+
+    @Html.ActionLink(linkText: "Login here",
+            actionName: "Index", controllerName: "Login",
+            routeValues: new { id = 100 },
+            htmlAttributes: new { @class = "btn btn-primary" }
+            )
+
+    <br />
+    @Html.ActionLink(linkText: "Welcome here",
+            actionName: "Index",
+            controllerName: "Welcome",
+            routeValues: null,
+            htmlAttributes: new { @class = "btn btn-dark" }
+
+            )
+</body>
+</html>
+

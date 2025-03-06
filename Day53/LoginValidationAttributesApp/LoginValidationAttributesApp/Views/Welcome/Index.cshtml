@@ -1,0 +1,33 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body class="container">
+
+@*     @if (@ViewBag.LoggedInUser == null)
+    {
+       <h1 class="display-1">Welcome back Mr.Anonymous==>From viewBag</h1>
+        
+    }
+    else
+    {
+        <h1 class="display-1">Welcome back @ViewBag.LoggedInUser</h1>
+        instead using view bag we using template=>TempData it will pass the data to other controller
+    } *@
+    @if (TempData["LoggedInUser"] == null)
+    {
+        <h1 class="display-1">Welcome back Mr.Anonymous</h1>
+    }
+    else
+    {
+        <h1 class="display-1">Welcome back @TempData["LoggedInUser"]</h1>
+
+    }
+
+
+</body>
+</html>
