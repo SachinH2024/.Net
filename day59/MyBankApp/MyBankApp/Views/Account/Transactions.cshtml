@@ -1,0 +1,38 @@
+﻿@model List<MyBankApp.Models.Transaction>
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+
+<h2>Transactions</h2>
+<form action="/Account/Transactions" method="get">
+    <input type="hidden" name="userId" value="@ViewBag.UserId" />
+    <label for="fromDate">From Date:</label><input type="date" name="fromDate" value="@ViewBag.FromDate" />
+    <label for="toDate">To Date:</label><input type="date" name="toDate" value="@ViewBag.ToDate" />
+    <input type="submit" class="btn btn-primary btn-lg"  value="Filter" />
+</form>
+<br />
+<a href="/Account/DownloadCsv?userId=@ViewBag.UserId&fromDate=@ViewBag.FromDate&toDate=@ViewBag.ToDate">Download CSV</a>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Debit</th>
+            <th scope="col">Credit</th>
+            <th scope="col">Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td scope="row">@transaction.TransactionDate</td>
+                <td>@transaction.Description</td>
+                <td>@transaction.Debit</td>
+                <td>@transaction.Credit</td>
+                <td>@transaction.Balance</td>
+            </tr>
+        }
+    </tbody>
+</table>
