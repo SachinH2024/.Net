@@ -1,0 +1,39 @@
+﻿@* @model MyBankApp.Models.User
+
+
+<h2>Welcome, @TempData["Username"]!</h2>
+
+<h2>Welcome, @TempData["CustomerId"]!</h2>
+
+<p>You have successfully logged in.</p>
+<p>Logout <a href="/Account/Login">Logout</a></p>
+
+
+    <input type="hidden" name="userId" value="@Model.CustomerId" />
+    <label for="description">Description:</label><input type="text" name="description" /><br />
+    <label for="amount">Amount:</label><input type="number" name="amount" /><br />
+    <input type="radio" id="credit" name="transactionType" value="credit" checked><label for="credit">Credit</label>
+    <input type="radio" id="debit" name="transactionType" value="debit"><label for="debit">Debit</label><br />
+    <input type="submit" value="Add Transaction" />
+
+
+ *@
+
+ @model MyBankApp.Models.User
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+<h2>Welcome @Model.Username</h2>
+<p>Current Balance: @ViewBag.Balance</p>
+
+ @* <a href="/Account/Edit/@Model.CustomerId">Edit Profile</a>  *@
+<br />
+<form action="/Account/AddTransaction" method="post">
+    <input type="hidden" name="userId" value="@Model.CustomerId" />
+    <label for="description">Description:</label><input type="text" name="description" /><br />
+    <label for="amount">Amount:</label><input type="number" name="amount" /><br />
+    <input type="radio" id="credit" name="transactionType" value="credit" checked><label for="credit">Credit</label>
+    <input type="radio" id="debit" name="transactionType" value="debit"><label for="debit">Debit</label><br />
+    <input type="submit" value="Add Transaction" />
+</form>
+<a href="/Account/Transactions?userId=@Model.CustomerId">View Transactions</a>

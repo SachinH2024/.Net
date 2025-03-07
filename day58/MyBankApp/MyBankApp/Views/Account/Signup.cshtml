@@ -1,0 +1,26 @@
+﻿@model MyBankApp.Models.User
+
+<h2>Signup </h2>
+
+<form action="Signup" method="post">
+   
+
+    <div >
+        <label for="CustomerID">CustomerID</label>
+        <input name="CustomerID" class="form-control" />
+        
+    </div>
+    <div >
+        <label for="Username">Username</label>
+        <input name="Username" class="form-control" />
+        
+    </div>
+    <div >
+        <label for="Password">Password</label>
+        <input name="Password" class="form-control" type="password" />
+        
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Sign up</button>
+    <p>Already have an account? <a href="/Account/Login">Login</a></p>
+</form>

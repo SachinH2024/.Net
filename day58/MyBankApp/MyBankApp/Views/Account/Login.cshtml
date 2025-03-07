@@ -1,0 +1,25 @@
+﻿@model MyBankApp.Models.User
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+     
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input name="Username" class="form-control" />
+        
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input name="Password" class="form-control" type="password" />
+       
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <p>Don't have an account? <a href="/Account/Signup">Sign up</a></p>
+</form>
+
